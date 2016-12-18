@@ -1,0 +1,23 @@
+#include<vector>
+#include<algorithm>
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    std::sort(A.begin(), A.end());
+    
+    size_t size = A.size();
+    auto it = A.rbegin();
+    
+    int firstTwo = A.at(0) * A.at(1);
+    
+    //Sprawdzenie czy 2 pierwsze nie są większe od przedostatniego i 3 od końca
+    if((firstTwo > (A.at(size-2) * A.at(size-3))) && (A.back() > 0))
+    {
+        return firstTwo * A.at(size-1);
+    }
+    return A.at(size-1) * A.at(size-2) * A.at(size-3);
+
+    
+}
+
