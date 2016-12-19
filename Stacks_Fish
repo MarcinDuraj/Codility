@@ -1,0 +1,41 @@
+// you can use includes, for example:
+// #include <algorithm>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A, vector<int> &B) {
+    // write your code in C++14 (g++ 6.2.0)
+    size_t counter = 0;
+    bool isFlowingDownstream = B.at(0);
+    
+    while(isFlowingDownstream == 0)
+    {
+        isFlowingDownstream = B.at(++counter);
+    }
+    //cout << isFlowingDownstream << endl;
+    for(size_t i = counter; i < A.size();++i)
+    {
+        if(isFlowingDownstream == 0)
+        {   
+            //cout <<"1. " <<isFlowingDownstream << endl;
+            isFlowingDownstream = B.at(i+1);
+            ++counter;
+            break;
+        }
+        if (isFlowingDownstream != B.at(i+1))
+        {
+            //cout <<"2. " <<isFlowingDownstream << endl;   
+            while(isFlowingDownstream == 1)
+            {
+                isFlowingDownstream = B.at(++i);
+                counter++;
+            }
+            break;
+        }
+        while((A.at(i) > A.at(++i)) && (B.at(i) = 0))
+        {//cout <<"3. " <<isFlowingDownstream << endl;
+        }
+    }
+    return counter;
+}
