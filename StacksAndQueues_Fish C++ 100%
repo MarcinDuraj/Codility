@@ -32,7 +32,7 @@ int solution(vector<int> &A, vector<int> &B) {
             {
                 continue;
             }
-            if ( stackB.top() < A.at(i) )
+            if ( stackA.top() < A.at(i) )
             {
                 stackB.pop();
                 stackA.pop(); 
