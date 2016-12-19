@@ -1,0 +1,46 @@
+
+
+// you can use includes, for example:
+// #include <algorithm>
+#include<stack>
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A, vector<int> &B) {
+    // write your code in C++14 (g++ 6.2.0)
+    
+    std::stack<int> stackA, 
+                    stackB;
+    size_t i = 0;
+    for(;i < A.size(); ++i)
+    {
+        if(stackA.empty())
+        {
+            stackA.push(A.at(i));    
+            stackB.push(B.at(i));
+            continue;
+        }
+        if(stackB.top() == B.at(i) || stackB.top() == 0)
+        {
+            stackA.push( A.at(i) ); 
+            stackB.push( B.at(i) ); 
+            continue;
+        }
+        if(stackB.top() != B.at(i) && stackB.top() != 0);
+        {
+            if ( stackA.top() > A.at(i) ) 
+            {
+                continue;
+            }
+            if ( stackB.top() < A.at(i) )
+            {
+                stackB.pop();
+                stackA.pop(); 
+                --i; 
+                continue;
+            }
+        }
+    }
+    return stackA.size();
+}
+
